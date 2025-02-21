@@ -6,9 +6,10 @@ import { FileText } from 'lucide-react';
 interface FileUploaderProps {
   onFileSelect: (file: File) => void;
   index: number;
+  label: string;
 }
 
-const FileUploader = ({ onFileSelect, index }: FileUploaderProps) => {
+const FileUploader = ({ onFileSelect, index, label }: FileUploaderProps) => {
   const [fileName, setFileName] = useState<string>('');
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -45,9 +46,9 @@ const FileUploader = ({ onFileSelect, index }: FileUploaderProps) => {
         ) : (
           <>
             <p className="text-sm font-medium text-gray-700">
-              {isDragActive ? 'Drop the PDF here' : 'Drop PDF here or click to browse'}
+              {isDragActive ? 'Drop the PDF here' : label}
             </p>
-            <p className="text-xs text-gray-500">PDF files only</p>
+            <p className="text-xs text-gray-500">Drop PDF here or click to browse</p>
           </>
         )}
       </div>

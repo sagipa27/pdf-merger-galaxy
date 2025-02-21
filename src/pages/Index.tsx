@@ -11,6 +11,12 @@ const Index = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
 
+  const fileLabels = [
+    "IMR Application",
+    "Client's signed Authorized Representative Designation for IMR",
+    "UR Determination Letter (treatment denial)"
+  ];
+
   const handleFileSelect = (index: number, file: File) => {
     const newFiles = [...files];
     newFiles[index] = file;
@@ -72,6 +78,7 @@ const Index = () => {
             <FileUploader
               key={index}
               index={index}
+              label={fileLabels[index]}
               onFileSelect={(file) => handleFileSelect(index, file)}
             />
           ))}

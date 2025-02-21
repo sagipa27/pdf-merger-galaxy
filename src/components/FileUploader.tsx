@@ -1,7 +1,7 @@
 
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { FilePdf } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 interface FileUploaderProps {
   onFileSelect: (file: File) => void;
@@ -39,7 +39,7 @@ const FileUploader = ({ onFileSelect, index }: FileUploaderProps) => {
     >
       <input {...getInputProps()} />
       <div className="flex flex-col items-center justify-center space-y-2">
-        <FilePdf className={`w-8 h-8 ${fileName ? 'text-green-500' : 'text-gray-400'}`} />
+        <FileText className={`w-8 h-8 ${fileName ? 'text-green-500' : 'text-gray-400'}`} />
         {fileName ? (
           <p className="text-sm font-medium text-green-600">{fileName}</p>
         ) : (

@@ -37,16 +37,15 @@ const Index = () => {
       setIsProcessing(true);
       const mergedPdfBytes = await mergePDFs(files as File[]);
       
-      // Create a download link
+      // Create blob and open in new tab
       const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'merged-document.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+      window.open(url, '_blank');
+      
+      // Clean up the URL object after a delay to ensure the PDF has loaded
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+      }, 1000);
 
       toast({
         title: "Success!",

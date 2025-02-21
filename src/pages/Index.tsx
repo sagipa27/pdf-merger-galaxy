@@ -89,7 +89,7 @@ const Index = () => {
                 Processing...
               </>
             ) : (
-              'Merge PDFs'
+              'Submit'
             )}
           </Button>
         </div>
